@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import Title from './Title';
 
 function Controller() {
     const [isLoading, setIsLoading]=useState(false);
@@ -10,9 +11,7 @@ const handleStop = async() =>{};
 
   return (
         <div className='h-screen overflow-y-hidden'>
-            <div>
-                Title
-            </div>
+            <Title setMessages={setMessages} />
             <div className='flex flex-col justify-between h-full overflow-y-scroll pb-96'>
                 Hi
             </div>
