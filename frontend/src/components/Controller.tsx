@@ -105,7 +105,7 @@ const Controller = () => {
 
                     {isLoading && (
                         <div className="text-center font-light italic mt-10 animate-pulse">
-                            Gimme a few seconds...
+                            Give me a few seconds...
                         </div>
                     )}
                 </div>

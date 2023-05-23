@@ -8,27 +8,35 @@ type Props = {
 function Title({ setMessages }: Props) {
     const [isResetting, setIsResetting] = useState(false);
 
+    // Reset conversation
     const resetConversation = async () => {
         setIsResetting(true);
+
         await axios
-            .get("http://localhost:8000/reset")
+            .get("http://localhost:8000/reset", {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
             .then((res) => {
                 if (res.status == 200) {
                     setMessages([]);
-                } else {
-                    console.error("There was an error with the API request");
                 }
             })
-            .catch((err) => console.error(err.message));
+            .catch((err) => { console.log(err) });
+
         setIsResetting(false);
     };
 
     return (
-        <div className="flex justify-between items-center w-full p-4 bg-gray-900 text-white font-bold">
-            <div className="italic">AshTree</div>
+        <div className="flex justify-between items-center w-full p-4 bg-gray-900 text-white font-bold shadow">
+            <div className="italic">Rachel</div>
             <button
                 onClick={resetConversation}
-                className="transition-all duration-300 text-blue-300 hover:text-pink-500"
+                className={
+                    "transition-all duration-300 text-blue-300 hover:text-pink-500 " +
+                    (isResetting && "animate-pulse")
+                }
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
